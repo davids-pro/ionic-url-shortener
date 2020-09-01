@@ -1,0 +1,18 @@
+.buttons {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.muted {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+}

@@ -1,0 +1,42 @@
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center" color="success">URL Shortener</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen class="ion-padding">
+    <ion-card *ngIf="!document.created">
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Entrez ou collez votre lien</ion-label>
+          <ion-textarea autocomplete="off" autofocus="true" [(ngModel)]="url" rows="5" placeholder="http://"
+            (keyup)="validateUrl()"></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="user" class="ion-margin-top">
+          <ion-label position="floating">Personnlisez votre id</ion-label>
+          <ion-input autocomplete="off" [(ngModel)]="shortId" [ngClass]="available ? 'available' : 'unavailable'"
+            placeholder="mon.id" (keyup)="verifyIfshortIdIsAvailable()"></ion-input>
+        </ion-item>
+        <ion-button class="ion-margin-top" expand="block" size="large" (click)="createDocument()">
+          Raccourcir</ion-button>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="document.created">
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating" color="primary">Votre lien raccourci</ion-label>
+          <ion-input autocomplete="off" [(ngModel)]="'https://shortened.daedal.pro/' + document.shortId"></ion-input>
+        </ion-item>
+        <ion-button class="ion-margin-top" expand="block" size="large" (click)="copyLink()">Copier le lien
+        </ion-button>
+        <ion-button class="ion-margin-top" expand="block" size="large" (click)="showQrCode()">Afficher le QR Code
+        </ion-button>
+        <ion-button class="ion-margin-top" expand="block" size="large" (click)="reset()">Nouveau lien
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</div>

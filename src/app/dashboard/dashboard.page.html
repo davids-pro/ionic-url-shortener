@@ -1,0 +1,38 @@
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center" color="success">URL Shortener</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen class="ion-padding">
+    <div *ngIf="user">
+
+      <ion-card class="ion-margin-bottom" *ngFor="let document of documents">
+        <ion-card-header>
+          <ion-card-subtitle>{{ document.url | slice:0:40 }}...</ion-card-subtitle>
+          <ion-card-title>
+            <a href="https://shortened.daedal.pro/{{ document.shortId }}" target="_blank">
+              shortened.daedal.pro/{{ document.shortId }}
+            </a>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img src="{{ document.image }}"></ion-img>
+          <div class="muted" *ngIf="document.customized">Lien personnalisé</div>
+          <div class="flex">
+            <span>Nombre de clicks</span>
+            <ion-badge color="success" slot="end">{{ document.clickCount }}</ion-badge>
+          </div>
+          <div class="buttons">
+            <ion-button size="small" color="success" (click)="copy(document)">Copier</ion-button>
+            <ion-button size="small" (click)="qrCode(document)">QR CODE</ion-button>
+            <ion-button size="small" color="danger" (click)="delete(document)">Supprimer</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+</div>

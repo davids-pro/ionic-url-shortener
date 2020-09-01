@@ -1,0 +1,35 @@
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center" color="success">URL Shortener</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen class="ion-padding">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Nom d'utilisateur</ion-label>
+          <ion-input [(ngModel)]="username" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-top">
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input type="password" [(ngModel)]="password" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-button class="ion-margin-top" expand="block" size="large" (click)="connectUser()">Connexion
+        </ion-button>
+        <div class="ion-text-center ion-padding-top ion-margin-top ion-margin-bottom">
+          <a routerLink="/recover">Mot de passe oublié</a>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="ion-margin-top">
+      <ion-card-content>
+        <ion-button color="success" expand="block" size="large" (click)="signUp()">Inscription
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</div>
